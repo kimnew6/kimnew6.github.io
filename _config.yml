@@ -103,7 +103,7 @@ analytics:
 author:
   name: "Yushin Kim"
   avatar: # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio: "I am an **amazing** person."
+  bio: "개발하는 재미, 그리고 기록"
   location: "Seoul, Korea"
   email:
   links:
