@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Welcome to Luluzoe'Blog"
+title:  "Conditional Rendering"
 ---
 
 # 조건부 렌더링
