@@ -278,3 +278,7 @@ defaults:
       comments: # true
       share: true
       related: true
+      kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
