@@ -8,7 +8,7 @@ title:  "Conditional Rendering"
 React에서 조건부 렌더링은 JavaScript에서의 조건 처리와 같이 동작한다. 예를 들어, App 컴포넌트에서 Hello 컴포넌트를 사용 할 때, `isSpecial` 이라는 props를 설정 해 보았다.
 
 ### Home.js
-```
+```js
 import React from 'react';
 import Hello from './Hello';
 
@@ -30,12 +30,12 @@ Hello 컴포넌트에서는 isSepcial이 `true` 냐 `false` 냐에 따라서 컴
 
 
 ### Hello.js
-```
+```js
 import React from 'react';
 
 const Hello = ({ color, name, isSpecial }) => {
   return (
-    <h1 style={{ color }}>
+    <h1 style= {{ color }} >
       {isSpecial ? <b>*</b> : null}
       {name}'s React Hooks
     </h1>
@@ -57,12 +57,12 @@ export default Hello;
 지금은 내용이 달라지는게 아니라, 단순히 특정 조건이 `true`면  보여주고, 그렇지 않다면 숨겨주고 있는데, 이러한 상황에서는 `&&` 연산자를 사용해서 처리하는 것이 더 간편하다.
 
 ### Hello.js
-```
+```js
 import React from 'react';
 
 const Hello = ({ color, name, isSpecial }) => {
   return (
-    <h1 style={{ color }}>
+    <h1 style= {{ color }} >
       {isSpecial && <b>*</b>}
       {name}'s React Hooks
     </h1>
@@ -81,7 +81,7 @@ export default Hello;
 컴포넌트의 props 값을 설정하게 될 때 만약 props 이름만 작성하고 값 설정을 생략한다면, 이를 `true` 로 설정한 것으로 간주한다.
 ### Home.js
 
-```
+```js
 import React from 'react';
 import Hello from './Hello';
 
