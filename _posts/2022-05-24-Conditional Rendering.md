@@ -37,10 +37,10 @@ import React from "react";
 
 const Hello = ({ color, name, isSpecial }) => {
   return (
-    <div style={{ color: "#800080" }}>
+    <h1 style= {{ color: "#800080" }} >
       {isSpecial ? <b>*</b> : null}
       {name}'s React Hooks
-    </div>
+    </h1>
   );
 };
 
@@ -65,7 +65,7 @@ import React from "react";
 
 const Hello = ({ color, name, isSpecial }) => {
   return (
-    <div style={{ color }}>
+    <div style= {{ color }} >
       {isSpecial && <b>*</b>}
       {name}'s React Hooks
     </div>
