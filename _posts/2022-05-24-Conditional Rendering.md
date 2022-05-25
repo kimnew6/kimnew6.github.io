@@ -65,10 +65,10 @@ import React from "react";
 
 const Hello = ({ color, name, isSpecial }) => {
   return (
-    <div style= {{ color }} >
+    <h1 style= {{ color }} >
       {isSpecial && <b>*</b>}
       {name}'s React Hooks
-    </div>
+    </h1>
   );
 };
 
