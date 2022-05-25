@@ -7,7 +7,10 @@ title: "Conditional Rendering"
 
 조건부 렌더링이란, 특정 조건에 따라 다른 결과물을 렌더링 하는 것을 의미한다.  
 React에서 조건부 렌더링은 JavaScript에서의 조건 처리와 같이 동작한다. 예를 들어, App 컴포넌트에서 Hello 컴포넌트를 사용 할 때, `isSpecial` 이라는 props를 설정 해 보았다.
-
+```html
+<script src="https://gist.github.com/kimnew6/a5372ca76f83a1b93b9ab9b17a593026.js"></script>
+```
+<script src="https://gist.github.com/kimnew6/a5372ca76f83a1b93b9ab9b17a593026.js"></script>
 ### Home.js
 
 ```jsx
