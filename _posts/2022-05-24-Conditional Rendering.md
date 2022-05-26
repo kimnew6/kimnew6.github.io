@@ -7,52 +7,18 @@ title: "Conditional Rendering"
 
 조건부 렌더링이란, 특정 조건에 따라 다른 결과물을 렌더링 하는 것을 의미한다.  
 React에서 조건부 렌더링은 JavaScript에서의 조건 처리와 같이 동작한다. 예를 들어, App 컴포넌트에서 Hello 컴포넌트를 사용 할 때, `isSpecial` 이라는 props를 설정 해 보았다.
-```html
-<script src="https://gist.github.com/kimnew6/a5372ca76f83a1b93b9ab9b17a593026.js"></script>
-```
-<script src="https://gist.github.com/kimnew6/a5372ca76f83a1b93b9ab9b17a593026.js"></script>
+
 ### Home.js
+<script src="https://gist.github.com/kimnew6/a5372ca76f83a1b93b9ab9b17a593026.js"></script>
 
-```jsx
-import React from "react";
-import Hello from "./Hello";
-
-const Home = () => {
-  return (
-    <>
-      <Hello name="LuluZoe" color="#800080" isSpecial={true} />
-      <Hello color="pink" />
-    </>
-  );
-};
-
-export default Home;
-```
 
 `isSpecial` 의 `true` 는 자바스크립트 값이므로 중괄호로 감싸준다.  
 Hello 컴포넌트에서는 isSepcial이 `true` 냐 `false` 냐에 따라서 컴포넌트의 좌측에 \* 표시를 보여주도록 하겠다.  
 이를 처리하는 가장 기본적인 방법은, 삼항연산자를 사용하는 것이다.
 
 ### Hello.js
+<script src="https://gist.github.com/kimnew6/799927274be6764d078db36eb2b79e77.js"></script>
 
-```jsx
-import React from "react";
-
-const Hello = ({ color, name, isSpecial }) => {
-  return (
-    <h1 style= {{ color: "#800080" }} >
-      {isSpecial ? <b>*</b> : null}
-      {name}'s React Hooks
-    </h1>
-  );
-};
-
-Hello.defaultProps = {
-  name: "이름 없음",
-};
-
-export default Hello;
-```
 
 `isSpecial` 값이 `true` 라면 `<b>*</b>` 를, 그렇지 않다면 `null` 을 보여주도록 했다. 참고로 JSX에서 null, false, undefined 를 렌더링하게 된다면 아무것도 나타나지 않게 된다.
 
@@ -62,25 +28,7 @@ export default Hello;
 지금은 내용이 달라지는게 아니라, 단순히 특정 조건이 `true`면 보여주고, 그렇지 않다면 숨겨주고 있는데, 이러한 상황에서는 `&&` 연산자를 사용해서 처리하는 것이 더 간편하다.
 
 ### Hello.js
-
-```jsx
-import React from "react";
-
-const Hello = ({ color, name, isSpecial }) => {
-  return (
-    <h1 style= {{ color }} >
-      {isSpecial && <b>*</b>}
-      {name}'s React Hooks
-    </h1>
-  );
-};
-
-Hello.defaultProps = {
-  name: "이름 없음",
-};
-
-export default Hello;
-```
+<script src="https://gist.github.com/kimnew6/aaf7b49b820a0c90cee2369ca07533cf.js"></script>
 
 `isSpecial && <b>*</b>` 의 결과는 `isSpecial` 이 `false` 일땐 `false` 이고, `isSpecial` 이 `true` 일 땐 `<b>*</b>` 가 된다.
 
@@ -89,22 +37,7 @@ export default Hello;
 컴포넌트의 props 값을 설정하게 될 때 만약 props 이름만 작성하고 값 설정을 생략한다면, 이를 `true` 로 설정한 것으로 간주한다.
 
 ### Home.js
-
-```jsx
-import React from "react";
-import Hello from "./Hello";
-
-const Home = () => {
-  return (
-    <>
-      <Hello name="LuluZoe" color="#800080" isSpecial />
-      <Hello color="pink" />
-    </>
-  );
-};
-
-export default Home;
-```
+<script src="https://gist.github.com/kimnew6/8e837ea6e7dce7f79112ddfad8bb3892.js"></script>
 
 이렇게 `isSpecial` 이름만 넣어주면 `isSpecial={true}` 와 동일한 의미이다.
 
