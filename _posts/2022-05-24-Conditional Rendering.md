@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Conditional Rendering"
+title: "ReactJS Conditional Rendering"
 ---
 
 # 조건부 렌더링
