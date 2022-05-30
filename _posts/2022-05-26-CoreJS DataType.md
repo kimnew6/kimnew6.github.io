@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "CoreJS 1.DataType"
+title: "CoreJS 1. DataType"
 ---
 
 # 데이터 타입
