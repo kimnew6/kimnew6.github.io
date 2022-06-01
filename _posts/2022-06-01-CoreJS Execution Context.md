@@ -15,7 +15,7 @@ title: "CoreJS 2. Execution Context"
 실행 컨텍스트는 동일한 환경에 있는 코드들을 실행할 때 필요한 환경 정보들을 모아 컨텍스트를 구성하고, 콜 스택(call stack)에 쌓아 올렸다가, 가장 위에 쌓여있는 컨텍스트와 관련 있는 코드들을 실행하는 식으로 전체 코드의 환경과 순서를 보장한다.     
       
 하나의 실행 컨텍스트를 구성할 수 있는 방법 : 전역공간, eval() 함수, 함수. 우리가 흔히 실행 컨텍스트를 구성하는 방법은 `함수를 실행`하는 것 뿐.    
-실행 컨텍스트 객체는 활성화되는 시점에 VariableEnvironment, LexicalEnvironment, ThisBinding의 세 가지 정보를 수집한다.    
+실행 컨텍스트 객체는 활성화되는 시점에 `VariableEnvironment`, `LexicalEnvironment`, `ThisBinding`의 세 가지 정보를 수집한다.    
 
 
 #### 콜 스택에 실행 컨텍스트가 쌓이는 순서    
@@ -30,19 +30,19 @@ title: "CoreJS 2. Execution Context"
 콜 스택의 맨 위에 쌓이는 순간이 현재 실행할 코드에 관여하게 되는 시점임을 알 수 있다.    
 
 lexical environment : '어휘적 환경', '정적 환경'이라고 불리며, 필자는 '사전적 환경'이라고 표현했다.   
-environmentRecord : 현재 컨텍스트와 관련된 코드의 식별자 정보들이 저장된다. 컨텍스트를 구성하는 지정된 매개별수 식별자, 선언한 함수 그 자체, var로 선언된 변수의 식별자 등.
-
-호이스팅(hoisting) : '식별자들을 최상단으로 끌어올려놓은 다음 실제 코드를 실행한다'라는 변수 정보를 수집하는 과정을 이해하기 쉬운 방법으로 대체한 가상의 개념. 편의상 끌어올린 것을 간주.
-
-함수 선언문(function declaration) : function 정의부만 존재하고 별도의 할당 명령이 없는 것을 의미한다.
-함수 표현식(function expression) : 별도의 변수에 할당하는 것을 말한다.
-
-스코프(scope) : 식별자에 대한 유효범위.    
-예) 어떤 경계 A의 외부에서 선언한 변수는 A의 외부, A의 내부에서 접근 가능. A의 내부에서 선언한 변수는 오직 A의 내부에서만 접근 가능.   
+environmentRecord : 현재 컨텍스트와 관련된 코드의 식별자 정보들이 저장된다. 컨텍스트를 구성하는 지정된 매개별수 식별자, 선언한 함수 그 자체, var로 선언된 변수의 식별자 등.   
     
-스코프 체인(scope chain) : `식별자의 유효범위`를 안에서부터 바깥으로 차례로 검색해나가는 것. 이를 가능하게 하는 것이 LexicalEnvironment의 두번째 수집 자료인 outerEnvironmentReference.
+호이스팅(hoisting) : '식별자들을 최상단으로 끌어올려놓은 다음 실제 코드를 실행한다'라는 변수 정보를 수집하는 과정을 이해하기 쉬운 방법으로 대체한 가상의 개념. 편의상 끌어올린 것을 간주.
+    
+함수 선언문(function declaration) : function 정의부만 존재하고 별도의 할당 명령이 없는 것을 의미한다.    
+함수 표현식(function expression) : 별도의 변수에 할당하는 것을 말한다.    
+    
+스코프(scope) : 식별자에 대한 유효범위.       
+예) 어떤 경계 A의 외부에서 선언한 변수는 A의 외부, A의 내부에서 접근 가능. A의 내부에서 선언한 변수는 오직 A의 내부에서만 접근 가능.       
+      
+스코프 체인(scope chain) : `식별자의 유효범위`를 안에서부터 바깥으로 차례로 검색해나가는 것. 이를 가능하게 하는 것이 LexicalEnvironment의 두번째 수집 자료인 outerEnvironmentReference.    
 변수 은닉화(variable shadowing) : inner 함수 내부에서 a 변수를 선언했기 때문에 전역 공간에서 선언한 동일한 이름의 a 변수에는 접근할 수 없는 것.    
-
-전역변수(global variable) : 전역 스코프에서 선언한 변수와 함수
-지역변수(local variable) : 어떤 함수 내부에서 선언한 함수와 그 함수 내부에서 선언한 변수.
+    
+전역변수(global variable) : 전역 스코프에서 선언한 변수와 함수.   
+지역변수(local variable) : 어떤 함수 내부에서 선언한 함수와 그 함수 내부에서 선언한 변수.   
 
