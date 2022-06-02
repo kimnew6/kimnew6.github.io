@@ -19,10 +19,25 @@ title: "CoreJS 2. Execution Context"
 
 
 #### 콜 스택에 실행 컨텍스트가 쌓이는 순서    
+```js
+var a = 1;
+function outer() {
+    function inner() {
+          console.log(a); // undefined
+          var a =3;
+    };
+    inner(); 
+    console.log(a);       // 1
+};
+outer();
+console.log(a);           // 1
+```
+<img width="550" alt="스크린샷 2022-06-02 오후 2 03 34" src="https://user-images.githubusercontent.com/84711115/171556516-0cfc1e68-677e-494f-b212-4be247277fdf.png">
+
 1. 처음 자바스크립트 코드를 실행하는 순간 전역 컨텍스트가 콜 스택에 담긴다.
 2. 전역 컨텍스트와 관련된 코드들을 순차로 진행한다.
 3. (함수가 있다면)함수를 호출 하면 자바스크립트 엔진은 함수에 대한 환경 정보를 수집, 실행 컨텍스트를 생성한 후 콜 스택에 담는다.
-4. 전역 컨텍스트와 관련된 코드는 일시중단, 함수 실행 컨텍스트와 관련된 코드를 순차로 실행.
+4. 전역 컨텍스트와 관련된 코드는 일시중단, 함수 실행 컨텍스트와 관련된 코드를 순차로 실행한다.
 5. 함수 실행이 종료되면 함수 실행 컨텍스트가 콜 스택에서 제거된다.
 6. 전역 공간에서 실행 중단했던 것을 이어서 실행. 전역 공간에 실행할 코드가 없으면 전역 컨텍스트도 제거.
 7. 콜 스택에 아무것도 남지 않은 상태로 종료.   
@@ -40,7 +55,8 @@ environmentRecord : 현재 컨텍스트와 관련된 코드의 식별자 정보�
 스코프(scope) : 식별자에 대한 유효범위.       
 예) 어떤 경계 A의 외부에서 선언한 변수는 A의 외부, A의 내부에서 접근 가능. A의 내부에서 선언한 변수는 오직 A의 내부에서만 접근 가능.       
       
-스코프 체인(scope chain) : `식별자의 유효범위`를 안에서부터 바깥으로 차례로 검색해나가는 것. 이를 가능하게 하는 것이 LexicalEnvironment의 두번째 수집 자료인 outerEnvironmentReference.    
+스코프 체인(scope chain) : `식별자의 유효범위`를 안에서부터 바깥으로 차례로 검색해나가는 것. 이를 가능하게 하는 것이 LexicalEnvironment의 두번째 수집 자료인 outerEnvironmentReference.       
+      
 변수 은닉화(variable shadowing) : inner 함수 내부에서 a 변수를 선언했기 때문에 전역 공간에서 선언한 동일한 이름의 a 변수에는 접근할 수 없는 것.    
     
 전역변수(global variable) : 전역 스코프에서 선언한 변수와 함수.   
