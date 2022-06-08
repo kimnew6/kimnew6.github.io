@@ -157,5 +157,6 @@ export default Counter;
       
 `onIncrease` 와 `onDecrease` 에서 `setNumber` 를 사용 할 때 그 다음 상태를 파라미터로 넣어준 것이 아니라, 값을 업데이트 하는 함수를 파라미터로 넣어주었다.    
       
-함수형 업데이트는 컴포넌트를 최적화 할 때 사용하게 된다. 다음에 더 깊이 알아보자.
+함수형 업데이트는 컴포넌트를 최적화 할 때 사용하게 된다. 다음에 더 깊이 알아보자.     
+### 참조
 [벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/basic/07-useState.html)
