@@ -10,6 +10,7 @@ useState 라는 함수를 사용해보게 되는데, 이게 바로 리액트의 
 간단히, 버튼을 누르면 숫자가 바뀌는 Counter 컴포넌트를 만들어 보자.    
 
 ### Counter.jsx
+<script src="https://gist.github.com/kimnew6/1e1809ad9a03d9216bb9468003467e61.js"></script>
 ```js
 import React from 'react';
 import Button from '@mui/material/Button';
@@ -66,6 +67,7 @@ onClick={onIncrease()}
 다음과 같이 코드를 수정해보자.   
 
 ### Counter.jsx
+<script src="https://gist.github.com/kimnew6/56e0da028617c1a3915667614420d977.js"></script>
 ```js
 import React, { useState } from 'react';   // 리액트 패키지에서 'useState' 라는 함수를 불러와준다.
 import Button from '@mui/material/Button';
@@ -124,6 +126,7 @@ h1 태그에서는 이제 0이 아닌 `{number}` 값을 보여주어야 한다.
 지금은 Setter 함수를 사용 할 때, 업데이트 하고 싶은 새로운 값을 파라미터로 넣어주고 있는데, 그 대신에 기존 값을 어떻게 업데이트 할 지에 대한 함수를 등록하는 방식으로도 값을 업데이트 할 수 있다.    
 
 ### Counter.jsx
+<script src="https://gist.github.com/kimnew6/3cf1282d4e7231e87daf42230daef514.js"></script>
 ```js
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
