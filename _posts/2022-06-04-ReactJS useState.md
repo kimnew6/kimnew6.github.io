@@ -59,6 +59,7 @@ onClick={onIncrease()}
 이렇게 하면 렌더링되는 시점에서 함수가 호출되어버리기 때문에, 이벤트를 설정할 때에는 함수타입의 값을 넣어주어야 한다는 것에 주의해야한다.     
 
 <img width="307" alt="스크린샷 2022-06-04 오후 8 21 22" src="https://user-images.githubusercontent.com/84711115/171997151-efeb7236-a16f-4bb6-b38a-04af52ca15eb.png">
+      
 버튼을 누르면 위 그림과 같이 콘솔에 메시지들이 출력 된다.     
 
 ### 동적인 값 끼얹기, useState
