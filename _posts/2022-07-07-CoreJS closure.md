@@ -4,19 +4,15 @@ title: "CoreJS closure"
 ---
 
 클로저는 여러 함수형 프로그래밍 언어에서 등장하는 보편적인 특성이다.    
-    
-자바스크립트 고유의 개념은 아니다. ECMAScript 명세에서 정의를 다루지 않는다.    
-    
+자바스크립트 고유의 개념은 아니다. ECMAScript 명세에서 정의를 다루지 않는다.        
 다양한 문헌에서 제각각 클로저를 다르게 정의를 설명하고 있다.    
     
-MDN에서는 “클로저는 함수와 그 함수가 선언될 당시의 lexical environment의 상호관계에 따른 현상”      
+MDN에서는 “클로저는 함수와 그 함수가 선언될 당시의 lexical environment의 상호관계에 따른 현상” 이라고 설명하고 있다.      
       
 **lexical environment** : 특정코드가 작성, 선언(정의)된 환경    
     
-선언될 당시의 lexical environment는 실행 컨텍스트의 구성 요소 중 하나인 outerEnvironmentReference에 해당한다.    
-    
-어떤 컨텍스트 A에서 선언한 내부함수 B의 실행 컨텍스트가 활성화된 시점에는 B의 outerEnvironmentReference가 참조하는 대상인 A의 LexicalEnvironment에도 접근 가능하다.    
-    
+선언될 당시의 lexical environment는 실행 컨텍스트의 구성 요소 중 하나인 outerEnvironmentReference에 해당한다.        
+어떤 컨텍스트 A에서 선언한 내부함수 B의 실행 컨텍스트가 활성화된 시점에는 B의 outerEnvironmentReference가 참조하는 대상인 A의 LexicalEnvironment에도 접근 가능하다.        
 A에서는 B에서 선언한 변수에 접근할 수 없고, B에서는 A에서 선언한 변수에 접근 가능하다.    
     
 내부함수에서 외부 변수를 참조하는 경우에 한해서만 ‘선언될 당시의 LexicalEnvironment와의 상호관계”가 성립한다.    
@@ -52,8 +48,7 @@ var outer2 = outer();    // inner 함수를 받음.
 outer2();                 // inner 함수를 실행, a 변수에 접근
 ```
     
-`Garbage Collection, GC` 은 메모리 관리 기법 중의 하나로, 프로그램이 동적으로 할당했던 메모리 영역 중에서 필요없게 된 영역을 해제하는 기능이다. 책에서 `GC는 Garbage Collector`   
-    
+`Garbage Collection, GC` 은 메모리 관리 기법 중의 하나로, 프로그램이 동적으로 할당했던 메모리 영역 중에서 필요없게 된 영역을 해제하는 기능이다. 책에서 `GC는 Garbage Collector`       
 변수 a 가 가비지 컬렉팅 대상에서 제외 된다. 지역변수를 참조하는 내부함수가 외부로 전달된 경우    
     
 **클로저란 어떤 함수 A(outer)에서 선언한 변수 a를 참조하는 내부함수 B(inner)를 외부로 전달할 경우 A의 실행 컨텍스트가 종료된 이후에도 변수 a가 사라지지 않는 현상**    
