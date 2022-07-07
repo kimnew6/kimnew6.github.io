@@ -20,7 +20,7 @@ A에서는 B에서 선언한 변수에 접근할 수 없고, B에서는 A에서 
 ```jsx
 var outer = function () {
 		var a = 1;             // outer 함수에서 변수 a를 선언
-								var inner = function () {
+		var inner = function () {
 				console.log(++a);  // 내부함수인 inner 함수에서 a의 값을 1만큼 증가시킨 다음 출력. 2
 		};
 		inner();
