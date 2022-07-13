@@ -51,4 +51,14 @@ var iu = new Person('Jieun', 28);
 iu.getName();       // Jieun
 ```
 
-__proto__ 
+`__proto__` 는 생략 가능한 프로퍼티이다.    
+
+```jsx
+suzi.__proto__.getName
+-> suzi(.__proto__).getName
+-> suzi.getName
+```
+
+`__proto__` 를 생략하지 않았을 때 : `this`는 `suzi.__proto__` 를 가리킴   
+`__proto__` 를 생략 했을 때 : `suzi` 를 가리킴. `suzi.__proto__` 에 있는 메서드인 `getName`을 실행하지만 `this`는 `suzi`를 바라보게 할 수 있게 됨.
+
