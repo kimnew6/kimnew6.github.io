@@ -10,7 +10,9 @@ title: "CoreJS prototype"
 `프로토타입` 기반 언어 : 어떤 객체를 `원형(prototype)`으로 삼고 이를 복제(참조)함으로써 상속과 비슷한 효과를 얻음    
 
 ### constructor, prototype, instance
-<img width="518" alt="스크린샷 2022-07-13 오전 11 09 02" src="https://user-images.githubusercontent.com/84711115/178635877-d1e85858-f9ea-4f29-a9a6-33793af6d82e.png">
+<img width="518" alt="스크린샷 2022-07-13 오전 11 09 02" src="https://user-images.githubusercontent.com/84711115/178635877-d1e85858-f9ea-4f29-a9a6-33793af6d82e.png">    
+
+
 위 그림은 다음 코드의 내용을 추상화한 것이다.    
 
 ```jsx
@@ -43,6 +45,7 @@ Person.prototype === suzi.__proto__. // true
 
 var suzi = new Person('Suzi');
 suzi.__proto__.getName();            // undefined. getName이 실행되었지만, this에 바인딩된 대상이 잘못 지정.
+
 ```
 
 ```jsx
