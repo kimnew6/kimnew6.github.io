@@ -219,6 +219,14 @@ Resource Owner의 승인이 마무리 되면 명시된 Redirect URL로 클라이
 
 **Query String으로 들어온 code가 바로 Authorization Code!**   
 
-Client는 ID와 비밀키 및 code를 Resource Owner를 거치지 않고 Resource Server에 직접 전달. Resource Server는 정보를 검사한 다음, 유효한 요청이라면 Access Token을 발급하게 됩니다.
+Client는 ID와 비밀키 및 code를 Resource Owner를 거치지 않고 Resource Server에 직접 전달한다. Resource Server는 정보를 검사한 다음, 유효한 요청이라면 Access Token을 발급하게 된다.    
+Client는 해당 토큰을 서버에 저장해두고, Resource Server의 자원을 사용하기 위한 API 호출시 해당 토큰을 헤더에 담아 보낸다.   
 
-Client는 해당 토큰을 서버에 저장해두고, Resource Server의 자원을 사용하기 위한 API 호출시 해당 토큰을 헤더에 담아 보냅니다.
+### API 호출
+이후 Access Token을 헤더에 담아 API를 호출하면, 해당 계정과 연동된 Resource Server의 풍부한 자원 및 기능들을 내가 만든 웹 어플리케이션에서 사용할 수 있다.     
+
+### Refresh Token
+> *Refresh Token의 발급 여부와 방법 및 갱신 주기 등은 OAuth를 제공하는 Resource Server마다 상이하다.*
+
+Access Token은 만료 기간이 있으며, 만료된 Access Token으로 API를 요청하면 401 에러가 발생한다. 보통 Resource Server는 Access Token을 발급할 때 Refresh Token을 함께 발급한다. Client는 두 Token을 모두 저장해두고, Resource Server의 API를 호출할 때는 Access Token을 사용한다. Access Token이 만료되어 401 에러가 발생하면, Client는 보관 중이던 Refresh Token을 보내 새로운 Access Token을 발급받게 된다.
+
