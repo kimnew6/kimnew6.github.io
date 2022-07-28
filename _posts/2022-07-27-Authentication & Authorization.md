@@ -101,7 +101,7 @@ title: "Authentication & Authorization"
     ```
     
     - Salting과 Key Stretching을 구현한 해쉬 함수중 가장 널리 사용되는 것이 Bcrypt이다.
-    - Bcrypt는 처음부터 비밀번호를 단방향 암호화 하기 위해 만들이전 해쉬함수이다.
+    - Bcrypt는 처음부터 비밀번호를 단방향 암호화 하기 위해 만들어진 해쉬함수이다.
 
 ## JWT(JSON Web Tokens)
 
