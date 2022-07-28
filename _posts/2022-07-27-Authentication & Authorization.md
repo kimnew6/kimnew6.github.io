@@ -106,7 +106,6 @@ title: "Authentication & Authorization"
 ## JWT(JSON Web Tokens)
 
 - 앞서 언급했듯이 유저가 로그인에 성공한 후에는 `access token`이라고 하는 암호화된 유저 정보를 첨부해서 request를 보내게 된다.
-    - 유저 로그인:
     - 유저는 로그인 성공후 다음부터는 `Access Token`을 첨부해서 request를 서버에 전송함으로서 매번 로그인 해도 되지 않도록 한다.
     
     ```
