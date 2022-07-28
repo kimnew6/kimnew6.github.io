@@ -163,9 +163,7 @@ Payload는 토큰에 담을 클레임(claim) 정보를 포함. Payload 에 담�
 
 마지막으로 Signature는 secret key를 포함하여 암호화되어 있다.
 
-# 인가(Authorization)
-
----
+## 인가(Authorization)
 
 - 인가도 JWT를 통해서 구현 될 수 있다.
 - `Access token`을 통해 해당 유저 정보를 얻을 수 있음으로 해당 유저가 가지고 있는 권한(permission)도 확인 할 수 있다.
@@ -179,3 +177,48 @@ Payload는 토큰에 담을 클레임(claim) 정보를 포함. Payload 에 담�
 5. user id를 사용해서 database에서 해당 유저의 권한(permission)을 확인하다.
 6. 유저가 충분한 권한을 가지고 있으면 해당 요청을 처리한다.
 7. 유저가 권한을 가지고 있지 않으면 Unauthorized Response(401) 혹은 다른 에러 코드를 보낸다.
+
+# OAuth
+**OAuth는 인터넷 사용자들이 비밀번호를 제공하지 않고 다른 웹사이트 상의 자신들의 정보에 대해 웹사이트나 애플리케이션의 접근 권한을 부여할 수 있는 공통적인 수단으로서 사용되는, 접근 위임을 위한 개방형 표준이다. (위키백과)**     
+
+예) 외부 어플리케이션(위프렉스)은 사용자 인증을 위해 Kakao과 Apple 및 Naver 등의 사용자 인증 방식을 사용합니다. 이 때, OAuth를 바탕으로 제 3자 서비스(위프렉스)는 외부 서비스(Kako, Apple, Naver)의 특정 자원을 접근 및 사용할 수 있는 권한을 인가받게 됩니다.      
+
+## OAuth 참여자
+OAuth 동작에 관여하는 참여자는 크게 세 가지로 구분할 수 있다.    
+- Resource Server : Client가 제어하고자 하는 자원을 보유하고 있는 서버.   
+  - Kakao, Google, Naver 등이 이에 속합니다.   
+
+- Resource Owner : 자원의 소유자.    
+  - Client가 제공하는 서비스를 통해 로그인하는 실제 유저가 이에 속한다.    
+
+- Client : Resoure Server에 접속해서 정보를 가져오고자 하는 클라이언트(웹 어플리케이션).    
+
+## OAuth Flow
+
+### Client 등록
+- Client(웹 어플리케이션)가 Resource Server를 이용하기 위해서는 자신의 서비스를 등록함으로써 사전 승인을 받아야 한다.
+
+등록 절차를 통해 세 가지 정보를 부여받는다.
+- Client ID : 클라이언트 웹 어플리케이션을 구별할 수 있는 식별자. 노출 무방.
+- Client Secret : Client ID에 대한 비밀키로서, 절대 노출해서는 안 됨.
+- Authorized redirect URL : Authorization Code를 전달받을 리다이렉트 주소.
+
+Google 등 외부 서비스를 통해 인증을 마치면 클라이언트를 명시된 주소로 리다이렉트 시키는데, 이 때 Query String으로 특별한 Code가 함께 전달됩니다. 클라이언트는 해당 Code와 Client ID 및 Client Secret을 Resource Server에 보내, Resource Server의 자원을 사용할 수 있는 Access Token을 발급 받습니다. 등록되지 않은 리다이렉트 URL을 사용하는 경우, Resource Server가 인증을 거부합니다.
+
+### Resource Owner의 승인
+Resource Owner는 Client의 웹 어플리케이션을 이용하다가, 해당 주소로 연결되는 소셜 로그인 버튼을 클릭.    
+Resource Owner는 Resource Server에 접속하여 로그인을 수행. 로그인이 완료되면 Resource Server는 Query String으로 넘어온 파라미터들을 통해 Client를 검사.
+- 파라미터로 전달된 Client ID와 동일한 ID 값이 존재하는지 확인.
+- 해당 Client ID에 해당하는 Redirect URL이 파라미터로 전달된 Redirect URL과 같은지 확인.    
+
+검증이 마무리 되면, 명시한 scope에 해당하는 권한을 Client에게 정말로 부여할 것인가?
+허용한다면 최종적으로 Resource Owner가 Resource Server에게 Client의 접근을 승인하게 된다.    
+
+### Resource Server의 승인
+Resource Owner의 승인이 마무리 되면 명시된 Redirect URL로 클라이언트를 리다이렉트 시킨다. 이 때 Resource Server는 Client가 자신의 자원을 사용할 수 있는 Access Token을 발급하기 전에, 임시 암호인 Authorization Code를 함께 발급한다.   
+
+**Query String으로 들어온 code가 바로 Authorization Code!**   
+
+Client는 ID와 비밀키 및 code를 Resource Owner를 거치지 않고 Resource Server에 직접 전달. Resource Server는 정보를 검사한 다음, 유효한 요청이라면 Access Token을 발급하게 됩니다.
+
+Client는 해당 토큰을 서버에 저장해두고, Resource Server의 자원을 사용하기 위한 API 호출시 해당 토큰을 헤더에 담아 보냅니다.
