@@ -234,5 +234,5 @@ Access Token은 만료 기간이 있으며, 만료된 Access Token으로 API를 
 
 ### 참조
 [wecode 노션](https://wecode.co.kr/)    
-[Tecoble](https://tecoble.techcourse.co.kr/post/2021-07-10-understanding-oauth/)
+[Tecoble](https://tecoble.techcourse.co.kr/post/2021-07-10-understanding-oauth/)    
 [OPENNARU](http://www.opennaru.com/opennaru-blog/jwt-json-web-token/)
